@@ -19,8 +19,8 @@ class POQrcodeGenerator internal constructor(Store: POStore, Transaction: POTran
 
         for (b in bytes) {
             for (i in 0..7) {
-                val bit = ((b.toInt() shr (7 - i)) and 1) == 1
-                val c15 = (crc shr 15 and 1) == 1
+                val bit = b.toInt() shr 7 - i and 1 == 1
+                val c15 = crc shr 15 and 1 == 1
                 crc = crc shl 1
                 if (c15 xor bit) crc = crc xor polynomial
             }
@@ -33,10 +33,9 @@ class POQrcodeGenerator internal constructor(Store: POStore, Transaction: POTran
     private fun buildqr(qrcodeRaw: Map<String, String>): String {
         val formatter: NumberFormat = DecimalFormat("00")
         var res = ""
-        for ((key, value) in qrcodeRaw) {
-            res += key
-            res += formatter.format(value.length.toLong())
-            res += value
+        for ((key, value) in qrcodeRaw) {    
+            if (value == "") continue
+            res += key.padStart(2, '0') + value.length.toString().padStart(2, '0') + value
         }
         return res
     }

@@ -50,7 +50,7 @@ class FlutterPayone {
     var stringParams = <String, dynamic>{
       'amount': amount.toString(),
       'currency': currencyCode,
-      'invoiceid': '#comet' + DateTime.now().microsecondsSinceEpoch.toString(),
+      'invoiceid': 'comet' + DateTime.now().microsecondsSinceEpoch.toString(),
       'description': description
     };
 

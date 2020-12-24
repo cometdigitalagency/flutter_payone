@@ -1,0 +1,43 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_appavailability (0.0.1):
+    - Flutter
+  - flutter_payone (0.0.1):
+    - Flutter
+    - PubNub (= 4.12.0)
+  - PubNub (4.12.0):
+    - PubNub/Core (= 4.12.0)
+  - PubNub/Core (4.12.0)
+  - url_launcher (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_appavailability (from `.symlinks/plugins/flutter_appavailability/ios`)
+  - flutter_payone (from `.symlinks/plugins/flutter_payone/ios`)
+  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
+
+SPEC REPOS:
+  trunk:
+    - PubNub
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_appavailability:
+    :path: ".symlinks/plugins/flutter_appavailability/ios"
+  flutter_payone:
+    :path: ".symlinks/plugins/flutter_payone/ios"
+  url_launcher:
+    :path: ".symlinks/plugins/url_launcher/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_appavailability: ebf8f85abea44436d1262fcde8a4e64b2534b01a
+  flutter_payone: a4789fc1bf72c51068a7e0ec20d12b0e4609c736
+  PubNub: 44e2eb39746e7231b98b978a8e3b9726b11dca9c
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0

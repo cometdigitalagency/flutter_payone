@@ -24,6 +24,11 @@ public typealias POSignalResult = PNSignalResult
 public typealias POSpaceEventResult = PNSpaceEventResult
 public typealias POMembershipEventResult = PNMembershipEventResult
 public typealias POUserEventResult = PNUserEventResult
+extension Bool {
+ static func ^ (left: Bool, right: Bool) -> Bool {
+  return left != right
+ }
+}
 
 public struct POQrcodeImage {
     public var info: String
@@ -111,7 +116,7 @@ public struct POQrcodeGenerator {
         ])
         
         qrcodeRaw += buildqr(fields: [
-                      "63" : crc16ccitt(data: (qrcodeRaw + "6304").utf8.map{$0}),
+            "63" : crc16ccitt(sStr: (qrcodeRaw + "6304")),
                   ])
         
         return qrcodeRaw
@@ -122,18 +127,23 @@ public struct POQrcodeGenerator {
     /// - Parameter polynome: polynome
     /// - Parameter start: start byte
     /// - Parameter final: end byte
-    private static func crc16ccitt(data: [UInt8], polynome: UInt16 = 0x1021, start: UInt16 = 0xffff, final: UInt16 = 0)->UInt16{
-        var crc = start
-        data.forEach { (byte) in
-            crc ^= UInt16(byte) << 8
-            crc &= 0xffff
-            (0..<8).forEach({ _ in
-                crc = (crc & UInt16(0x8000)) != 0 ? (crc << 1) ^ polynome : crc << 1
-                crc &= UInt16(0xffff)
-            })
-        }
-        crc ^= final
-        return crc
+    private static func crc16ccitt(sStr: String)->String{
+        let final = 0xFFFF
+        var crc = final
+        let polynomial = 0x1021
+        let bytes: [UInt16] = sStr.utf16.map{$0}
+        bytes.forEach { (byte) in
+         (0...7).forEach { (i) in
+            let bit = ((Int(byte) >> (7 - i)) & 1) == 1
+            let c15 = (crc >> 15 & 1) == 1
+            crc = crc << 1
+            if(c15 ^ bit){
+                crc = crc ^ polynomial
+                }
+                }
+            }
+        let crcc = crc & final
+        return String(format:"%02X",crcc)
     }
 }
 
