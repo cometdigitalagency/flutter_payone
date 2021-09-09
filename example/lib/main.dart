@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_payone/constants.dart';
 import 'package:flutter_payone/flutter_payone.dart';
 

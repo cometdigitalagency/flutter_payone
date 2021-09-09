@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_payone.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_payone.iml" group="flutter_payone" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_payone.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_payone.iml" />
     </modules>
   </component>
 </project>

@@ -4,16 +4,15 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.annotation.NonNull;
-import com.comet.payone.POManager
-import com.comet.payone.callback.POMCallback
 import com.google.gson.JsonObject
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
+import payone.POManager
+import payone.callback.POMCallback
 
 /** FlutterPayonePlugin */
 public class FlutterPayonePlugin: FlutterPlugin, MethodCallHandler {
