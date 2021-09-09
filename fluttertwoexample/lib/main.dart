@@ -125,17 +125,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       initStore();
                     },
-                    child: Text("build string of qrcode")),
+                    child: Text("init store")),
                 ElevatedButton(
                     onPressed: () {
                       buildQrcode();
                     },
                     child: Text("build string of qrcode")),
+                ElevatedButton(
+                    onPressed: () {
+                      startObserve();
+                    },
+                    child: Text("start observe")),
                 QrImage(
                   data: _qrcodeValue,
                   version: QrVersions.auto,
                   size: 200.0,
                 ),
+                Text(_transactionValue)
               ],
             )
           ],
