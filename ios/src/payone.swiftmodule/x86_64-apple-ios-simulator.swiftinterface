@@ -1,0 +1,77 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-module-flags: -target x86_64-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name payone
+import Foundation
+import PubNub
+import Swift
+public class PayOneService {
+  public init()
+  public func login(_ username: Swift.String, _ password: Swift.String) -> Swift.String
+  @objc deinit
+}
+public typealias POSocketDidReceiveMessageBlock = (payone.POMessageResult) -> Swift.Void
+public typealias POSocketDidReceiveStatusBlock = (payone.POStatus) -> Swift.Void
+public typealias POStatus = PubNub.PNStatus
+public typealias POMessageResult = PubNub.PNMessageResult
+public typealias POResult = PubNub.PNResult
+public typealias POMessageData = PubNub.PNMessageData
+public typealias POPresenceEventResult = PubNub.PNPresenceEventResult
+public typealias POSubscribeStatus = PubNub.PNSubscribeStatus
+public typealias POStatusCategory = PubNub.PNStatusCategory
+public typealias POSignalResult = PubNub.PNSignalResult
+public typealias POSpaceEventResult = PubNub.PNSpaceEventResult
+public typealias POMembershipEventResult = PubNub.PNMembershipEventResult
+public typealias POUserEventResult = PubNub.PNUserEventResult
+public struct POQrcodeImage {
+  public var info: Swift.String
+  public var mcid: Swift.String
+  public var uuid: Swift.String
+}
+public struct POQrcodeGenerator {
+  public static func getQRCodeInfo(store: payone.POStore, transaction: payone.POTransaction) -> Swift.String?
+}
+public struct POStore {
+  public var mcid: Swift.String
+  public var terminalid: Swift.String?
+  public var country: Swift.String
+  public var province: Swift.String
+  public var subscribeKey: Swift.String
+  public init(mcid: Swift.String, country: Swift.String, province: Swift.String, terminalID: Swift.String? = nil, subscribeKey: Swift.String)
+}
+public struct POTransaction {
+  public var invoiceid: Swift.String
+  public var amount: Swift.Int
+  public var currency: Swift.String
+  public var description: Swift.String
+  public var reference: Swift.String
+  public static func createUniqueTransaction(amount: Swift.Int, currency: Swift.String, description: Swift.String, invoiceid: Swift.String) -> payone.POTransaction
+}
+@objc @_inheritsConvenienceInitializers public class POManager : ObjectiveC.NSObject {
+  public var iin: Swift.String
+  public var applicationid: Swift.String
+  public var mcid: Swift.String
+  public var terminalid: Swift.String?
+  public var country: Swift.String
+  public var province: Swift.String
+  public var subscribeKey: Swift.String
+  public var uuid: Swift.String
+  public static var shared: payone.POManager
+  public var onReceivedMessage: payone.POSocketDidReceiveMessageBlock?
+  public var onReceivedStatus: payone.POSocketDidReceiveStatusBlock?
+  public func initStore(mcid: Swift.String, country: Swift.String, province: Swift.String, subscribeKey: Swift.String, terminalid: Swift.String, iin: Swift.String, applicationid: Swift.String)
+  public func test()
+  public func buildQrcode(amount: Swift.Int, currency: Swift.String, invoiceid: Swift.String, description: Swift.String) -> Swift.String
+  public func start()
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension POManager : PubNub.PNObjectEventListener {
+  @objc dynamic public func client(_ client: PubNub.PubNub, didReceiveMessage message: PubNub.PNMessageResult)
+  @objc dynamic public func client(_ client: PubNub.PubNub, didReceive status: PubNub.PNStatus)
+  @objc dynamic public func client(_ client: PubNub.PubNub, didReceivePresenceEvent event: PubNub.PNPresenceEventResult)
+  @objc dynamic public func client(_ client: PubNub.PubNub, didReceiveSignal signal: PubNub.PNSignalResult)
+  @objc dynamic public func client(_ client: PubNub.PubNub, didReceiveUserEvent event: PubNub.PNUserEventResult)
+  @objc dynamic public func client(_ client: PubNub.PubNub, didReceiveSpaceEvent event: PubNub.PNSpaceEventResult)
+  @objc dynamic public func client(_ client: PubNub.PubNub, didReceiveMembershipEvent event: PubNub.PNMembershipEventResult)
+  public func client(_ client: PubNub.PubNub, didReceiveMessageAction action: PubNub.PNUserEventResult)
+}

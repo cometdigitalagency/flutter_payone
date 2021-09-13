@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import payone
 
 public class SwiftFlutterPayonePlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -12,12 +13,12 @@ public class SwiftFlutterPayonePlugin: NSObject, FlutterPlugin {
    switch call.method {
       case "initStore":
           do {
-              var storeData = call.arguments
+            let storeData = call.arguments
               result(self.initStore(storeData: storeData as![String: String]))
           }
       case "buildqrcode":
           do{
-           var transectionData = call.arguments
+            let transectionData = call.arguments
            result(self.buildQrcode(qrData: transectionData as![String: String]))
           }
       case "observe":
@@ -43,8 +44,8 @@ public class SwiftFlutterPayonePlugin: NSObject, FlutterPlugin {
        }
        
        private func buildQrcode(qrData:[String:String])->String{
-           var test = Int(qrData["amount"]!)
-           return POManager.shared.buildQrcode(amount: test!, currency: qrData["currency"]!, invoiceid: qrData["invoiceid"]!, description: qrData["description"]!)
+        let amount = Int(qrData["amount"]!)
+           return POManager.shared.buildQrcode(amount: amount!, currency: qrData["currency"]!, invoiceid: qrData["invoiceid"]!, description: qrData["description"]!)
        }
 
 }
