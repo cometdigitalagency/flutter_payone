@@ -13,7 +13,7 @@ add the following code to your `pubspec.yaml` :
 
 ```yaml
 dependencies:
-  comet_payone: ^1.1.0
+  comet_payone: ^2.0.0
 ```
 
 ## Usage
