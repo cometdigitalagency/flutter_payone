@@ -7,11 +7,6 @@ import 'package:flutter_payone/constants.dart';
 class FlutterPayone {
   static const MethodChannel _channel = const MethodChannel('flutter_payone');
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-
   static Future<String> initStore(
       String mcid,
       Province province,
@@ -39,7 +34,7 @@ class FlutterPayone {
       response = result.toString();
       return response;
     } on PlatformException catch (e) {
-      return "Failed to Invoke: '${e.message}'.";
+      throw e;
     }
   }
 
@@ -59,7 +54,7 @@ class FlutterPayone {
       response = result.toString();
       return response;
     } on PlatformException catch (e) {
-      return "Failed to Invoke: '${e.message}'.";
+      throw e;
     }
   }
 
@@ -69,7 +64,7 @@ class FlutterPayone {
       String response = result.toString();
       return response;
     } on PlatformException catch (e) {
-      return "Failed to Invoke: '${e.message}'.";
+      throw e;
     }
   }
 }
