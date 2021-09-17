@@ -7,6 +7,7 @@ import 'package:flutter_payone/constants.dart';
 class FlutterPayone {
   static const MethodChannel _channel = const MethodChannel('flutter_payone');
 
+  /// ເລີ່ມຕົ້ນສະໝັກຮ້ານຂອງທ່ານ ເຊີ່ງ mcid ແລະ subscribeKey ຈະໄດ້ມາຈາກທະນາຄານການຄ້າຕ່າງປະເທດລາວ ສ່ວນ terminalid ແມ່ນໃສ່ຕາມໃຈ
   static Future<String> initStore(
       String mcid,
       Province province,
@@ -38,6 +39,7 @@ class FlutterPayone {
     }
   }
 
+  /// amount ແມ່ນຈໍານວນເງິນແລະສະກຸນເງິນແມ່ນ ກີບ ແລະ ສາມາດໃສ່ຄໍາອະທິບາຍ description ໄດ້ເລີຍ ໂດຍຈະໄດ້ຮັບເປັນ string ເພື່ອເອົາໄປສ້າງ qrcode
   static Future<String> buildQrcode(
       int amount, Currency currency, String description) async {
     String response = "";
@@ -58,6 +60,7 @@ class FlutterPayone {
     }
   }
 
+  /// ແລະສາມາດເລີ່ມຕິດຕາມທຸລະກໍາໄດ້ເລີຍ ໂດຍມັນຈະຕອບໂຕ້ກັບຄືນດ້ວຍຂໍ້ມູນທຸລະກໍາ ເຊັ່ນ ຊື່ຄົນຈ່າຍ,ຈໍານວນເງິນ etc...
   static Future<String> startObserve() async {
     try {
       final result = await _channel.invokeMethod('observe');
