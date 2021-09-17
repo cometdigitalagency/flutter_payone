@@ -1,6 +1,7 @@
 name: comet_payone
 description: Comet payone for Flutter package to connect to bcel, developed by comet.
-version: 2.0.0
+version: 2.0.0+1
+
 homepage: https://github.com/cometdigitalagency/flutter_payone.git
 
 environment:
