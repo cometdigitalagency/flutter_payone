@@ -1,7 +1,7 @@
-name: flutter_payone
-description: A new Flutter plugin.
-version: 1.0.0
-homepage: https://comet.la
+name: comet_payone
+description: Comet payone for Flutter package to connect to bcel, developed by comet.
+version: 2.0.0
+homepage: https://github.com/cometdigitalagency/flutter_payone.git
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

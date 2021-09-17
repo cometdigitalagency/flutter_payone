@@ -1,7 +1,7 @@
+import 'package:comet_payone/constants.dart';
+import 'package:comet_payone/comet_payone.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_payone/constants.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_payone/flutter_payone.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('flutter_payone');
@@ -51,17 +51,17 @@ void main() {
       String subscribeKey = "sub-c-91489692-fa26-11e9-be22-ea7c5aada356";
       String terminalid = "12345678";
       expect(
-          await FlutterPayone.initStore(mcid, province, subscribeKey,
+          await CometPayone.initStore(mcid, province, subscribeKey,
               terminalid, country, bankName, applicationId),
           'initialized store');
     });
     test('test build qrcode', () async {
-      expect(await FlutterPayone.buildQrcode(1, Currency.laoKip, "test"),
+      expect(await CometPayone.buildQrcode(1, Currency.laoKip, "test"),
           "00020101021133380004BCEL0106ONEPAY0216mch6066c3a96b789520441115303418540115802LA6003VTE62850121comet163124667466530805360e14aa5b-41e4-4ba2-8151-222449ab870d0708123456780804test6304744e");
     });
 
     test('test observe', () async {
-      expect(await FlutterPayone.startObserve(), observeRes.toString());
+      expect(await CometPayone.startObserve(), observeRes.toString());
     });
   });
   group("payone test failed", () {
@@ -90,20 +90,20 @@ void main() {
       Province province = Province.vientiane;
       String subscribeKey = "sub-c-91489692-fa26-11e9-be22-ea7c5aada356";
       String terminalid = "12345678";
-      final call = FlutterPayone.initStore;
+      final call = CometPayone.initStore;
       expect(
           () => call(mcid, province, subscribeKey, terminalid, country,
               bankName, applicationId),
           throwsA(TypeMatcher<PlatformException>()));
     });
     test('test build qrcode', () async {
-      final call = FlutterPayone.buildQrcode;
+      final call = CometPayone.buildQrcode;
       expect(() => call(1, Currency.laoKip, "test"),
           throwsA(TypeMatcher<PlatformException>()));
     });
 
     test('test observe', () async {
-      final call = FlutterPayone.startObserve;
+      final call = CometPayone.startObserve;
       expect(() => call(), throwsA(TypeMatcher<PlatformException>()));
     });
   });

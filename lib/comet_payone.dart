@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'dart:ffi';
-
+import 'package:comet_payone/constants.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_payone/constants.dart';
 
-class FlutterPayone {
+class CometPayone {
   static const MethodChannel _channel = const MethodChannel('flutter_payone');
 
   /// ເລີ່ມຕົ້ນສະໝັກຮ້ານຂອງທ່ານ ເຊີ່ງ mcid ແລະ subscribeKey ຈະໄດ້ມາຈາກທະນາຄານການຄ້າຕ່າງປະເທດລາວ ສ່ວນ terminalid ແມ່ນໃສ່ຕາມໃຈ
@@ -14,12 +12,13 @@ class FlutterPayone {
       String subscribeKey,
       String terminalid,
       Country country,
-      String bankName,
-      String applicationId) async {
+      String? bankName,
+      String? applicationId) async {
     String response = "";
     String countryCode = PayOneDataHelper.getCountryCode(country);
     String provinceCode = PayOneDataHelper.getProvinceCode(province);
-
+    if (bankName == null) bankName = "BCEL";
+    if (applicationId == null) applicationId = "ONEPAY";
     var storeData = <String, dynamic>{
       'mcid': mcid,
       'province': provinceCode,

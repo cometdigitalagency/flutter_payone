@@ -1,29 +1,31 @@
 # comet_payone
-[![pub package](https://img.shields.io/pub/v/comet_payone.svg)](https://pub.dartlang.org/packages/comet_payone) 
+
+[![pub package](https://img.shields.io/pub/v/comet_payone.svg)](https://pub.dartlang.org/packages/comet_payone)
 [![codecov](https://codecov.io/gh/cometdigitalagency/flutter_payone/branch/master/graph/badge.svg?token=OB2RZWR16Y)](https://codecov.io/gh/cometdigitalagency/flutter_payone)
 
-Flutter payone ສໍາຫຼັບ  [Flutter](https://flutter.io) ແພັກເກັດເຊື່ອມຕໍ່ bcel ພັດທະນາໂດຍທີມ comet.
+Comet payone for [Flutter](https://flutter.io) package to connect to bcel, developed by comet.
 
-ເພັກເກັດທີ່ຈະຊ່ວຍໃຫ້ທ່ານ ສ້າງ qrcode ສໍາຫຼັບຈ່າຍເງິນ ແລະ ຕິດຕາມວ່າ ທຸລະກໍາຂອງທ່ານສໍາເລັດຫຼືຍັງ
+The package will generate qrcode for payment and tracking transaction status.
 
-## ຕິດຕັ້ງ
-ເພີ່ມ code ນີ້ໃສ່ `pubspec.yaml` :
+## Installation
+
+add the following code to your `pubspec.yaml` :
 
 ```yaml
 dependencies:
   comet_payone: ^1.1.0
 ```
 
-## ນໍາໃຊ້
+## Usage
 
-import ດ້ວຍ code ລຸ່ມນີ້
+import the package
 
 ```dart
 import 'package:flutter_payone/constants.dart';
 import 'package:flutter_payone/flutter_payone.dart';
 ```
 
-ເລີ່ມຕົ້ນສະໝັກຮ້ານຂອງທ່ານ ເຊີ່ງ mcid ແລະ subscribeKey ຈະໄດ້ມາຈາກທະນາຄານການຄ້າຕ່າງປະເທດລາວ
+Register your shop with mcid and subcribeKey which will be granted by BCEL
 
 ```dart
 Future<String> initStore() async {
@@ -39,7 +41,9 @@ Future<String> initStore() async {
           subscribeKey, terminalid, country, bankName, applicationId);
   }
 ```
-ສ້າງ QR code ຈາກຮ້ານທີ່ທ່ານຫາກໍສ້າງກີ້ນີ້ ໂດຍ amount ແມ່ນຈໍານວນເງິນໃນຕົວຢ່າງເຮົາຈະໃສ່ 1 ກີບ ແລະສະກຸນເງິນແມ່ນ ກີບ ແລະ ສາມາດໃສ່ຄໍາອະທິບາຍ description ໄດ້ເລີຍ ໂດຍຈະໄດ້ຮັບເປັນ string ເພື່ອເອົາໄປສ້າງ qrcode
+
+Generate QR Code, example: amount = 1 and LAK currency. You also can add a description to the QR Code which will accept string value.
+
 ```dart
 Future<String> buildQrcode() async {
     int amount = 1;
@@ -49,7 +53,7 @@ Future<String> buildQrcode() async {
   }
 ```
 
-ແລະສາມາດເລີ່ມຕິດຕາມທຸລະກໍາໄດ້ເລີຍ ໂດຍມັນຈະຕອບໂຕ້ກັບຄືນດ້ວຍຂໍ້ມູນທຸລະກໍາ ເຊັ່ນ ຊື່ຄົນຈ່າຍ,ຈໍານວນເງິນ etc...
+Now you can start tracking transaction, expect transaction response are customer name, paid amount, etc.
 
 ```dart
   Future<String> startObserve() async {
