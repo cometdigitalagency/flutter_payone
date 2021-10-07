@@ -8,6 +8,9 @@ Add documents, clean up example, create unit test
 * Clean up example.
 * Update unit test.
 
+## 2.0.0+2
+Fix observe transection in android and make ios support
+
 
 
 
