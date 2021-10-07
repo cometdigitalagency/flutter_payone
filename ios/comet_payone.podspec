@@ -3,7 +3,7 @@
 # Run `pod lib lint flutter_payone.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_payone'
+  s.name             = 'comet_payone'
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
